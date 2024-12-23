@@ -25,6 +25,26 @@ app.get('/trapecio/:a/:b/:h', (req, resp) => {
         resp.send('El área del trapecio es: ' + area.toFixed(2)); 
 });
 
+app.get('/trinomio/:a/:b/:c', (req, res) => {
+    // Obtener los parámetros de la URL
+    let a = parseInt(req.params.a);
+    let b = parseInt(req.params.b);
+    let c = parseInt(req.params.c);
+
+    // Verificar si el trinomio es un cuadrado perfecto
+    let discriminante = Math.pow(b, 2) - 4 * a * c;
+
+    if (discriminante === 0) {
+        let p = b / (2 * a); // Valor de p
+        let factor = `(x ${p < 0 ? '+ ' : '- '}${Math.abs(p)})²`;
+        res.send('Respuesta: El trinomio es un cuadrado perfecto y su factorización es ' + factor);
+    } else {
+        res.send(`El trinomio ${a}x² ${b < 0 ? '- ' : '+ '}${Math.abs(b)}x ${c < 0 ? '- ' : '+ '}${Math.abs(c)} NO es un cuadrado perfecto.`);
+    }
+});
+
+
+
 
 app.listen(3001,()=>{
     console.log ('Correcto');
