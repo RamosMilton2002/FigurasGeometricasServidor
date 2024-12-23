@@ -26,12 +26,11 @@ app.get('/trapecio/:a/:b/:h', (req, resp) => {
 });
 
 app.get('/trinomio/:a/:b/:c', (req, res) => {
-    // Obtener los parámetros de la URL
+
     let a = parseInt(req.params.a);
     let b = parseInt(req.params.b);
     let c = parseInt(req.params.c);
 
-    // Verificar si el trinomio es un cuadrado perfecto
     let discriminante = Math.pow(b, 2) - 4 * a * c;
 
     if (discriminante === 0) {
